@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwbcot8yrmq5"]
+
+[ext_resource type="Script" uid="uid://clq1jatmbrse7" path="res://settings/maestro.gd" id="1_oflvj"]
+[ext_resource type="AudioStream" uid="uid://pfl0qfibdw0e" path="res://settings/shaveAndAHaircut.mp3" id="2_ay3ux"]
+
+[sub_resource type="AudioStreamMP3" id="AudioStreamMP3_ay3ux"]
+
+[node name="Maestro" type="Node"]
+script = ExtResource("1_oflvj")
+sounds = Dictionary[String, AudioStreamMP3]({
+"shave": ExtResource("2_ay3ux")
+})
+musics = Dictionary[String, AudioStreamMP3]({
+"shave": ExtResource("2_ay3ux")
+})
+voices = Dictionary[String, AudioStreamMP3]({
+"shave": ExtResource("2_ay3ux")
+})
+
+[node name="SFXPlayer0" type="AudioStreamPlayer" parent="."]
+max_polyphony = 10
+bus = &"SFX"
+
+[node name="SFXPlayer1" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
+
+[node name="SFXPlayer2" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
+
+[node name="SFXPlayer3" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
+
+[node name="SFXPlayer4" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
+
+[node name="SFXPlayer5" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
+
+[node name="SFXPlayer6" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
+
+[node name="SFXPlayer7" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
+
+[node name="SFXPlayer8" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
+
+[node name="SFXPlayer9" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
+
+[node name="SFXPlayer10" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
+
+[node name="SFXPlayer11" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamMP3_ay3ux")
+bus = &"Music"
+
+[node name="VoicePlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Voice"

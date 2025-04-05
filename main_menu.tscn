@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=3 uid="uid://djr4appp7w2pw"]
+
+[ext_resource type="Script" uid="uid://dupet1i8gns64" path="res://main_menu.gd" id="1_06t4h"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_06t4h")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="RichTextLabel" parent="UI/Control"]
+layout_mode = 0
+offset_left = 164.0
+offset_top = 56.0
+offset_right = 773.0
+offset_bottom = 286.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/normal_font_size = 36
+theme_override_font_sizes/bold_font_size = 36
+bbcode_enabled = true
+text = "[color=#a7a][b][wave amp=200]Ludum Dare 57 Game Title Here[/wave][/b]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayGameBtn" type="Button" parent="UI/Control"]
+layout_mode = 0
+offset_left = 279.0
+offset_top = 192.0
+offset_right = 369.0
+offset_bottom = 223.0
+rotation = 2.07141
+text = "Play Game"
+
+[node name="SettingsBtn" type="Button" parent="UI/Control"]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 313.0
+offset_right = 582.0
+offset_bottom = 344.0
+rotation = -0.370295
+text = "Settings"
+
+[node name="TestBtn" type="Button" parent="UI/Control"]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 181.0
+offset_right = 111.0
+offset_bottom = 212.0
+rotation = 0.761965
+text = "Test"
+
+[connection signal="pressed" from="UI/Control/SettingsBtn" to="." method="_on_settings_btn_pressed"]
+[connection signal="pressed" from="UI/Control/TestBtn" to="." method="_on_test_btn_pressed"]
