@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://cwxliipvf2603"]
+
+[ext_resource type="Script" uid="uid://b5ht4s8p1gtc7" path="res://toggle.gd" id="1_w2yvn"]
+[ext_resource type="Texture2D" uid="uid://dlm0tquh1q6ee" path="res://images/toggle_down.png" id="2_x5gn1"]
+[ext_resource type="Texture2D" uid="uid://yumslleqk225" path="res://images/toggle_up.png" id="3_4plqx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_du4ng"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_x5gn1")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_4plqx")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1thh5"]
+radius = 41.1096
+
+[node name="Toggle" type="Node2D"]
+script = ExtResource("1_w2yvn")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_du4ng")
+animation = &"down"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2, 3)
+shape = SubResource("CircleShape2D_1thh5")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

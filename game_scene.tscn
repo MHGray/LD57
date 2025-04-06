@@ -1,0 +1,119 @@
+[gd_scene load_steps=13 format=3 uid="uid://cwga33gh5b026"]
+
+[ext_resource type="Script" uid="uid://cl2txxltyeck7" path="res://game_scene.gd" id="1_6e45b"]
+[ext_resource type="Texture2D" uid="uid://bixrpglf3clhm" path="res://images/console_back.png" id="1_mj2jn"]
+[ext_resource type="PackedScene" uid="uid://dfe1njo4jdljs" path="res://button.tscn" id="1_mlf6e"]
+[ext_resource type="PackedScene" uid="uid://cg2u0q7lxcnk" path="res://wheel.tscn" id="2_po0ka"]
+[ext_resource type="PackedScene" uid="uid://ctwffyyou880p" path="res://slider.tscn" id="3_v1wow"]
+[ext_resource type="PackedScene" uid="uid://cwxliipvf2603" path="res://toggle.tscn" id="4_mixcd"]
+[ext_resource type="PackedScene" uid="uid://b4n76yt0rr88u" path="res://indicator.tscn" id="7_e35lh"]
+[ext_resource type="PackedScene" uid="uid://dderte68ec7m7" path="res://compass.tscn" id="8_e35lh"]
+[ext_resource type="PackedScene" uid="uid://b63cvjquxkb5v" path="res://bathymeter.tscn" id="9_udeyl"]
+[ext_resource type="PackedScene" uid="uid://4pi6qesrisup" path="res://reality.tscn" id="10_miq82"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_miq82"]
+viewport_path = NodePath("SubViewportContainer/SubViewport")
+
+[sub_resource type="World3D" id="World3D_miq82"]
+
+[node name="Game_Scene" type="Node2D"]
+script = ExtResource("1_6e45b")
+
+[node name="ConsoleBack" type="Sprite2D" parent="."]
+texture = ExtResource("1_mj2jn")
+
+[node name="LeftButton" parent="." instance=ExtResource("1_mlf6e")]
+position = Vector2(-87, 169)
+scale = Vector2(0.364992, 0.364992)
+
+[node name="RightButton" parent="." instance=ExtResource("1_mlf6e")]
+position = Vector2(99, 170)
+scale = Vector2(0.364992, 0.364992)
+
+[node name="Wheel" parent="." instance=ExtResource("2_po0ka")]
+position = Vector2(-241, 114)
+rotation = 1.03046
+scale = Vector2(0.571755, 0.571755)
+
+[node name="Throttle" parent="." instance=ExtResource("3_v1wow")]
+position = Vector2(265, 9)
+rotation = -0.0725824
+scale = Vector2(2.11807, 2.11807)
+
+[node name="Toggle" parent="." instance=ExtResource("4_mixcd")]
+position = Vector2(128, -160)
+scale = Vector2(0.560451, 0.560451)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="DownIndicator" parent="." instance=ExtResource("7_e35lh")]
+position = Vector2(-37, -119)
+rotation = 0.01997
+scale = Vector2(0.185109, 0.213454)
+
+[node name="LeftIndicator" parent="." instance=ExtResource("7_e35lh")]
+position = Vector2(-58, -168)
+rotation = 0.01997
+scale = Vector2(0.185109, 0.213454)
+
+[node name="BackIndicator" parent="." instance=ExtResource("7_e35lh")]
+position = Vector2(-78, -134)
+rotation = 0.01997
+scale = Vector2(0.185109, 0.213454)
+
+[node name="RightIndicator" parent="." instance=ExtResource("7_e35lh")]
+position = Vector2(-16, -142)
+rotation = 0.01997
+scale = Vector2(0.185109, 0.213454)
+
+[node name="UpIndicator" parent="." instance=ExtResource("7_e35lh")]
+position = Vector2(-37, -182)
+rotation = 0.01997
+scale = Vector2(0.185109, 0.213454)
+
+[node name="Compass" parent="." instance=ExtResource("8_e35lh")]
+position = Vector2(11, 170)
+
+[node name="Bathymeter" parent="." instance=ExtResource("9_udeyl")]
+position = Vector2(-222, -103)
+rotation = 0.0776791
+scale = Vector2(0.342603, 0.342603)
+
+[node name="SubViewportContainer" type="Sprite2D" parent="."]
+position = Vector2(48, 10)
+rotation = 0.0447719
+scale = Vector2(9.87632, 9.87632)
+texture = SubResource("ViewportTexture_miq82")
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+world_3d = SubResource("World3D_miq82")
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(32, 20)
+render_target_update_mode = 4
+
+[node name="Reality" parent="SubViewportContainer/SubViewport" instance=ExtResource("10_miq82")]
+
+[node name="Player" parent="SubViewportContainer/SubViewport/Reality" index="0" node_paths=PackedStringArray("left_button", "right_button", "wheel", "throttle", "toggle", "compass", "bathymeter", "indicator_down", "indicator_up", "indicator_left", "indicator_right", "indicator_back")]
+left_button = NodePath("../../../../LeftButton")
+right_button = NodePath("../../../../RightButton")
+wheel = NodePath("../../../../Wheel")
+throttle = NodePath("../../../../Throttle")
+toggle = NodePath("../../../../Toggle")
+compass = NodePath("../../../../Compass")
+bathymeter = NodePath("../../../../Bathymeter")
+indicator_down = NodePath("../../../../DownIndicator")
+indicator_up = NodePath("../../../../UpIndicator")
+indicator_left = NodePath("../../../../LeftIndicator")
+indicator_right = NodePath("../../../../RightIndicator")
+indicator_back = NodePath("../../../../BackIndicator")
+
+[node name="AudioListener3D" parent="SubViewportContainer/SubViewport/Reality/Player" index="4"]
+current = true
+
+[connection signal="turned" from="Wheel" to="." method="_on_wheel_turned"]
+[connection signal="changed" from="Compass" to="." method="_on_compass_changed"]
+
+[editable path="SubViewportContainer/SubViewport/Reality"]
+[editable path="SubViewportContainer/SubViewport/Reality/Player"]

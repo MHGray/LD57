@@ -1,20 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://dwbcot8yrmq5"]
+[gd_scene load_steps=7 format=3 uid="uid://dwbcot8yrmq5"]
 
 [ext_resource type="Script" uid="uid://clq1jatmbrse7" path="res://settings/maestro.gd" id="1_oflvj"]
-[ext_resource type="AudioStream" uid="uid://pfl0qfibdw0e" path="res://settings/shaveAndAHaircut.mp3" id="2_ay3ux"]
+[ext_resource type="AudioStream" uid="uid://cvvcirpvtcgyr" path="res://sfx/wheel_ee.mp3" id="2_2bkly"]
+[ext_resource type="AudioStream" uid="uid://co0jei3fjik01" path="res://sfx/wheel_oo.mp3" id="3_kvb01"]
+[ext_resource type="AudioStream" uid="uid://qibpmbmkpjvk" path="res://sfx/button_in.mp3" id="4_uhi08"]
+[ext_resource type="AudioStream" uid="uid://y7rq0hlxh6fh" path="res://sfx/button_out.mp3" id="5_cti12"]
 
 [sub_resource type="AudioStreamMP3" id="AudioStreamMP3_ay3ux"]
 
 [node name="Maestro" type="Node"]
 script = ExtResource("1_oflvj")
 sounds = Dictionary[String, AudioStreamMP3]({
-"shave": ExtResource("2_ay3ux")
-})
-musics = Dictionary[String, AudioStreamMP3]({
-"shave": ExtResource("2_ay3ux")
-})
-voices = Dictionary[String, AudioStreamMP3]({
-"shave": ExtResource("2_ay3ux")
+"button_in": ExtResource("4_uhi08"),
+"button_out": ExtResource("5_cti12"),
+"wheel_ee": ExtResource("2_2bkly"),
+"wheel_oo": ExtResource("3_kvb01")
 })
 
 [node name="SFXPlayer0" type="AudioStreamPlayer" parent="."]

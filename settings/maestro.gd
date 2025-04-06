@@ -20,10 +20,10 @@ enum BUS_TYPE{
 func _ready() -> void:
 	voice_player.finished.connect(play_next_voice)
 
-func play(sfx_name:String):
+func play(sfx_name:String, volume:float = 1) -> AudioStreamPlayer:
 	if !sounds.has(sfx_name):
 		printerr("Tried playing sfx that didn't exist: ", sfx_name)
-		return
+		return null
 	var chosen_player:AudioStreamPlayer = null
 	for player:AudioStreamPlayer in sfx_players:
 		if player.playing:
@@ -31,29 +31,36 @@ func play(sfx_name:String):
 		chosen_player = player
 		break
 	if !chosen_player:
-		return
+		return null
 	chosen_player.stream = sounds[sfx_name]
-	chosen_player.pitch_scale = randf_range(.95,1.05)
+	if volume:
+		chosen_player.volume_linear = volume
+	else:
+		chosen_player.volume_linear = randf_range(.85,1.00)
+	chosen_player.pitch_scale = randf_range(.92,1.08)
 	chosen_player.play()
+	return chosen_player
 
-func play_music(music_name:String, loop:bool = true):
+func play_music(music_name:String, loop:bool = true) -> AudioStreamPlayer:
 	if !musics.has(music_name):
 		printerr("Tried playing music that didn't exist: ", music_name)
-		return
+		return null
 	music_player.stream = musics[music_name]
 	music_player.stream.loop = loop
 	music_player.play()
+	return music_player
 
-func play_voice(voice_name:String, enqueue:bool = true):
+func play_voice(voice_name:String, enqueue:bool = true) -> AudioStreamPlayer:
 	if !voices.has(voice_name):
 		printerr("Tried playing voice that didn't exist: ", voice_name)
-		return
+		return null
 	if voice_player.playing and enqueue:
 		voice_queue.append(voices[voice_name])
-		return
+		return voice_player
 	elif voice_player.playing: return
 	voice_player.stream = voices[voice_name]
 	voice_player.play()
+	return voice_player
 		
 func play_next_voice():
 	if voice_queue.size() == 0: return

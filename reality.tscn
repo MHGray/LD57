@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://4pi6qesrisup"]
+
+[ext_resource type="Script" uid="uid://drcaeci5bkoby" path="res://reality.gd" id="1_0jo7o"]
+[ext_resource type="PackedScene" uid="uid://be3jwa5uu4i67" path="res://reality_sub.tscn" id="1_gd5p4"]
+[ext_resource type="PackedScene" uid="uid://cl32uvjrpomd6" path="res://map.tscn" id="2_0jo7o"]
+[ext_resource type="PackedScene" uid="uid://d2u7vg0sbxevl" path="res://fingy.tscn" id="4_k872o"]
+
+[node name="Reality" type="Node3D" node_paths=PackedStringArray("player")]
+script = ExtResource("1_0jo7o")
+player = NodePath("Player")
+
+[node name="Player" parent="." instance=ExtResource("1_gd5p4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00327277, -0.696278, -0.00990582)
+
+[node name="map" parent="." instance=ExtResource("2_0jo7o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.84565, 0)
+
+[node name="Node3D" parent="." instance=ExtResource("4_k872o")]
+transform = Transform3D(2.98023e-08, -1, 0, 1, 2.98023e-08, 0, 0, 0, 1, 2.02107, 0, 0)

@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://dfe1njo4jdljs"]
+
+[ext_resource type="Texture2D" uid="uid://cghc2h3tfp11a" path="res://images/button_down.png" id="1_n4tde"]
+[ext_resource type="Script" uid="uid://7yogigt11r0y" path="res://button.gd" id="1_vxja4"]
+[ext_resource type="Texture2D" uid="uid://b3pes7315fglu" path="res://images/button_up.png" id="2_vxja4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mixcd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_n4tde")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_vxja4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_n4tde")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vxja4")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lt4la"]
+radius = 49.3922
+
+[node name="Btn" type="Area2D"]
+script = ExtResource("1_vxja4")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_mixcd")
+animation = &"up"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lt4la")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

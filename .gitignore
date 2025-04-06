@@ -5,6 +5,8 @@
 .import/
 export.cfg
 export_credentials.cfg
+/exports
+/blends
 
 # Imported translations (automatically generated from CSV files)
 *.translation

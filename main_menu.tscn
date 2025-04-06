@@ -58,5 +58,6 @@ offset_bottom = 212.0
 rotation = 0.761965
 text = "Test"
 
+[connection signal="pressed" from="UI/Control/PlayGameBtn" to="." method="_on_play_game_btn_pressed"]
 [connection signal="pressed" from="UI/Control/SettingsBtn" to="." method="_on_settings_btn_pressed"]
 [connection signal="pressed" from="UI/Control/TestBtn" to="." method="_on_test_btn_pressed"]

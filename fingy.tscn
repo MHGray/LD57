@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2u7vg0sbxevl"]
+
+[ext_resource type="PackedScene" uid="uid://bkykkgq5fkthe" path="res://models/fingy.glb" id="1_qinok"]
+
+[sub_resource type="Animation" id="Animation_grn3v"]
+resource_name = "wiggle"
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_nxej7"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sbnjo"]
+_data = {
+&"RESET": SubResource("Animation_nxej7"),
+&"wiggle": SubResource("Animation_grn3v")
+}
+
+[node name="Node3D" type="Node3D"]
+
+[node name="fingy" parent="." instance=ExtResource("1_qinok")]
+transform = Transform3D(0.173859, 0, 0, 0, 0.173859, 0, 0, 0, 0.173859, 0.0162493, 0, 0.0506339)
+
+[node name="Skeleton3D" parent="fingy/Armature" index="0"]
+rotation_edit_mode = 1
+
+[node name="OmniLight3D" type="OmniLight3D" parent="fingy/Armature/Skeleton3D/Circle" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0934623, 4.79744, -0.291235)
+light_color = Color(0, 1, 1, 1)
+light_energy = 2.984
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_sbnjo")
+}
+autoplay = "wiggle"
+
+[editable path="fingy"]
