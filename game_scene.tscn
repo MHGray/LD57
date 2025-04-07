@@ -1,15 +1,20 @@
-[gd_scene load_steps=13 format=3 uid="uid://cwga33gh5b026"]
+[gd_scene load_steps=16 format=3 uid="uid://cwga33gh5b026"]
 
 [ext_resource type="Script" uid="uid://cl2txxltyeck7" path="res://game_scene.gd" id="1_6e45b"]
 [ext_resource type="Texture2D" uid="uid://bixrpglf3clhm" path="res://images/console_back.png" id="1_mj2jn"]
 [ext_resource type="PackedScene" uid="uid://dfe1njo4jdljs" path="res://button.tscn" id="1_mlf6e"]
 [ext_resource type="PackedScene" uid="uid://cg2u0q7lxcnk" path="res://wheel.tscn" id="2_po0ka"]
+[ext_resource type="Texture2D" uid="uid://dxqffl7jkk37t" path="res://images/settings.png" id="3_ueiaa"]
 [ext_resource type="PackedScene" uid="uid://ctwffyyou880p" path="res://slider.tscn" id="3_v1wow"]
 [ext_resource type="PackedScene" uid="uid://cwxliipvf2603" path="res://toggle.tscn" id="4_mixcd"]
 [ext_resource type="PackedScene" uid="uid://b4n76yt0rr88u" path="res://indicator.tscn" id="7_e35lh"]
+[ext_resource type="PackedScene" uid="uid://bpyd4l4nujyqe" path="res://o_2_meter.tscn" id="7_j5hk1"]
 [ext_resource type="PackedScene" uid="uid://dderte68ec7m7" path="res://compass.tscn" id="8_e35lh"]
 [ext_resource type="PackedScene" uid="uid://b63cvjquxkb5v" path="res://bathymeter.tscn" id="9_udeyl"]
 [ext_resource type="PackedScene" uid="uid://4pi6qesrisup" path="res://reality.tscn" id="10_miq82"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_daj04"]
+radius = 68.284
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_miq82"]
 viewport_path = NodePath("SubViewportContainer/SubViewport")
@@ -22,12 +27,24 @@ script = ExtResource("1_6e45b")
 [node name="ConsoleBack" type="Sprite2D" parent="."]
 texture = ExtResource("1_mj2jn")
 
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(170, 178)
+rotation = 0.0915508
+scale = Vector2(0.135018, 0.135018)
+
+[node name="Settings" type="Sprite2D" parent="Area2D"]
+scale = Vector2(1, 1)
+texture = ExtResource("3_ueiaa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_daj04")
+
 [node name="LeftButton" parent="." instance=ExtResource("1_mlf6e")]
-position = Vector2(-87, 169)
+position = Vector2(-102, 140)
 scale = Vector2(0.364992, 0.364992)
 
 [node name="RightButton" parent="." instance=ExtResource("1_mlf6e")]
-position = Vector2(99, 170)
+position = Vector2(101, 139)
 scale = Vector2(0.364992, 0.364992)
 
 [node name="Wheel" parent="." instance=ExtResource("2_po0ka")]
@@ -43,37 +60,44 @@ scale = Vector2(2.11807, 2.11807)
 [node name="Toggle" parent="." instance=ExtResource("4_mixcd")]
 position = Vector2(128, -160)
 scale = Vector2(0.560451, 0.560451)
+value = true
+
+[node name="O2Meter" parent="." instance=ExtResource("7_j5hk1")]
+position = Vector2(-44, -143)
+rotation = -0.101774
+scale = Vector2(0.246751, 0.246751)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 
 [node name="DownIndicator" parent="." instance=ExtResource("7_e35lh")]
-position = Vector2(-37, -119)
+position = Vector2(84, 181)
 rotation = 0.01997
 scale = Vector2(0.185109, 0.213454)
 
 [node name="LeftIndicator" parent="." instance=ExtResource("7_e35lh")]
-position = Vector2(-58, -168)
+position = Vector2(-159, 6)
 rotation = 0.01997
 scale = Vector2(0.185109, 0.213454)
 
 [node name="BackIndicator" parent="." instance=ExtResource("7_e35lh")]
-position = Vector2(-78, -134)
+position = Vector2(-61, 176)
 rotation = 0.01997
 scale = Vector2(0.185109, 0.213454)
 
 [node name="RightIndicator" parent="." instance=ExtResource("7_e35lh")]
-position = Vector2(-16, -142)
+position = Vector2(219, 122)
 rotation = 0.01997
 scale = Vector2(0.185109, 0.213454)
 
 [node name="UpIndicator" parent="." instance=ExtResource("7_e35lh")]
-position = Vector2(-37, -182)
+position = Vector2(67, -177)
 rotation = 0.01997
 scale = Vector2(0.185109, 0.213454)
 
 [node name="Compass" parent="." instance=ExtResource("8_e35lh")]
-position = Vector2(11, 170)
+position = Vector2(2, 150)
+rotation = 0.186154
 
 [node name="Bathymeter" parent="." instance=ExtResource("9_udeyl")]
 position = Vector2(-222, -103)
@@ -83,7 +107,7 @@ scale = Vector2(0.342603, 0.342603)
 [node name="SubViewportContainer" type="Sprite2D" parent="."]
 position = Vector2(48, 10)
 rotation = 0.0447719
-scale = Vector2(9.87632, 9.87632)
+scale = Vector2(9.876, 9.876)
 texture = SubResource("ViewportTexture_miq82")
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
@@ -112,8 +136,10 @@ indicator_back = NodePath("../../../../BackIndicator")
 [node name="AudioListener3D" parent="SubViewportContainer/SubViewport/Reality/Player" index="4"]
 current = true
 
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="turned" from="Wheel" to="." method="_on_wheel_turned"]
 [connection signal="changed" from="Compass" to="." method="_on_compass_changed"]
+[connection signal="body_entered" from="SubViewportContainer/SubViewport/Reality/Node3D2/Area3D" to="." method="_on_area_3d_body_entered"]
 
 [editable path="SubViewportContainer/SubViewport/Reality"]
 [editable path="SubViewportContainer/SubViewport/Reality/Player"]

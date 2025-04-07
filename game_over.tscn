@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmcfweecdlguf"]
+
+[ext_resource type="Script" uid="uid://dwfobt1aj42t8" path="res://game_over.gd" id="1_y26ei"]
+
+[node name="GameOver" type="Node2D"]
+script = ExtResource("1_y26ei")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0338533, 0.0338533, 0.0338533, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[wave amp=50][font_size=50]Thank you for playing"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 1201.0
+offset_top = 12.0
+offset_right = 1266.0
+offset_bottom = 43.0
+rotation = 0.344396
+text = "Restart"
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

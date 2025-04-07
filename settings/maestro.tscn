@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwbcot8yrmq5"]
+[gd_scene load_steps=8 format=3 uid="uid://dwbcot8yrmq5"]
 
 [ext_resource type="Script" uid="uid://clq1jatmbrse7" path="res://settings/maestro.gd" id="1_oflvj"]
 [ext_resource type="AudioStream" uid="uid://cvvcirpvtcgyr" path="res://sfx/wheel_ee.mp3" id="2_2bkly"]
 [ext_resource type="AudioStream" uid="uid://co0jei3fjik01" path="res://sfx/wheel_oo.mp3" id="3_kvb01"]
 [ext_resource type="AudioStream" uid="uid://qibpmbmkpjvk" path="res://sfx/button_in.mp3" id="4_uhi08"]
 [ext_resource type="AudioStream" uid="uid://y7rq0hlxh6fh" path="res://sfx/button_out.mp3" id="5_cti12"]
+[ext_resource type="AudioStream" uid="uid://b01xly6lod017" path="res://music/milk.mp3" id="6_cti12"]
 
 [sub_resource type="AudioStreamMP3" id="AudioStreamMP3_ay3ux"]
 
@@ -15,6 +16,12 @@ sounds = Dictionary[String, AudioStreamMP3]({
 "button_out": ExtResource("5_cti12"),
 "wheel_ee": ExtResource("2_2bkly"),
 "wheel_oo": ExtResource("3_kvb01")
+})
+musics = Dictionary[String, AudioStreamMP3]({
+"milk": ExtResource("6_cti12")
+})
+voices = Dictionary[String, AudioStreamMP3]({
+"button_out": ExtResource("5_cti12")
 })
 
 [node name="SFXPlayer0" type="AudioStreamPlayer" parent="."]

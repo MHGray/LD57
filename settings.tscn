@@ -47,7 +47,7 @@ max_value = 6.0
 step = 3.9
 rounded = true
 bus_name = "Music"
-sample_to_play = "shave"
+sample_to_play = "milk"
 type_of_sample = 2
 
 [node name="SFXLabel" type="RichTextLabel" parent="CanvasLayer/Control/MarginContainer/VBoxContainer"]
@@ -66,7 +66,7 @@ max_value = 6.0
 step = 3.9
 rounded = true
 bus_name = "SFX"
-sample_to_play = "shave"
+sample_to_play = "button_in"
 type_of_sample = 1
 
 [node name="VoiceLabel" type="RichTextLabel" parent="CanvasLayer/Control/MarginContainer/VBoxContainer"]
@@ -85,16 +85,37 @@ max_value = 6.0
 step = 3.9
 rounded = true
 bus_name = "Voice"
-sample_to_play = "shave"
+sample_to_play = "button_out"
 type_of_sample = 3
 
 [node name="BackBtn" type="Button" parent="CanvasLayer"]
-offset_left = 560.0
-offset_top = 42.0
-offset_right = 605.0
-offset_bottom = 73.0
-rotation = -0.76342
+offset_left = 596.0
+offset_top = 223.0
+offset_right = 641.0
+offset_bottom = 254.0
+rotation = -0.0285961
+scale = Vector2(2.05856, 2.05856)
 text = "Back
 "
 
+[node name="BackBtn2" type="Button" parent="CanvasLayer"]
+offset_left = 592.0
+offset_top = 480.0
+offset_right = 637.0
+offset_bottom = 511.0
+rotation = -0.0285961
+scale = Vector2(2.05856, 2.05856)
+text = "Back
+"
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 1201.0
+offset_top = 12.0
+offset_right = 1266.0
+offset_bottom = 43.0
+rotation = 0.344396
+text = "Restart"
+
 [connection signal="pressed" from="CanvasLayer/BackBtn" to="." method="_on_back_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/BackBtn2" to="." method="_on_back_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

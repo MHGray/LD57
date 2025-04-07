@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://cf0fa4jy3xyar" path="res://images/compass_dial.png" id="1_4k05d"]
 
 [sub_resource type="Gradient" id="Gradient_2gf7n"]
-offsets = PackedFloat32Array(0, 0.906015)
-colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0, 0.691729, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.191729, 0.191729, 0.191729, 0.808271, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_leea2"]
 gradient = SubResource("Gradient_2gf7n")
@@ -33,12 +33,12 @@ region_enabled = true
 region_rect = Rect2(19, 16, 2, 16)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-47.5, 0)
-scale = Vector2(0.128906, 16)
+position = Vector2(-40, 0)
+scale = Vector2(0.1875, 16)
 texture = SubResource("GradientTexture1D_leea2")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(48, 0)
+position = Vector2(39.9684, -2.03616e-05)
 rotation = -3.14159
-scale = Vector2(0.128906, 16)
+scale = Vector2(0.191653, 16)
 texture = SubResource("GradientTexture1D_leea2")

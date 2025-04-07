@@ -1,37 +1,82 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2u7vg0sbxevl"]
+[gd_scene load_steps=6 format=4 uid="uid://d2u7vg0sbxevl"]
 
-[ext_resource type="PackedScene" uid="uid://bkykkgq5fkthe" path="res://models/fingy.glb" id="1_qinok"]
+[ext_resource type="Script" uid="uid://c83awgbucc5up" path="res://fingy.gd" id="1_grn3v"]
+[ext_resource type="Texture2D" uid="uid://38q26gymlkrm" path="res://models/fingy_Circle Layer.png" id="2_grn3v"]
 
-[sub_resource type="Animation" id="Animation_grn3v"]
-resource_name = "wiggle"
-loop_mode = 1
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xvc8x"]
+resource_name = "Circle"
+cull_mode = 2
+albedo_texture = ExtResource("2_grn3v")
+metallic = 1.0
+texture_filter = 2
 
-[sub_resource type="Animation" id="Animation_nxej7"]
-length = 0.001
+[sub_resource type="ArrayMesh" id="ArrayMesh_shf86"]
+resource_name = "fingy_Circle"
+_surfaces = [{
+"aabb": AABB(-0.446614, 0, -0.515705, 0.893227, 5.26721, 1.03141),
+"attribute_data": PackedByteArray("AAAAALAKfj+Q0JE+sElvPULO2D2g3n4/j1FZPt+Ufz8YgaM+//9/P57I2j7//38/tTYJP+aOfz89IyU/+sd+P9VaXD5EHwU+aS6EPlS2Lj4o4K0+3MklPvuJPT7ADpw8xqFkPujgwz4gx5k+xPQ1Pnnsnj4isMU+keHLPpwEwT60h70+AFHgPZ7ZvD4AAIAzbILmPWg8OT+D/gg8F/k3P0MDXT4GGjo/eUIHPoAUvD5X0xM9YFSwPtg9oz7gTjo/9s6KPrB9GD568IE+iMzyPZNtmD7wrhw+Vl+lPvSkET55Fqk+mE3ePSoV+z4KbrU+JqQXP5rGoj4/X9g+l7o5PxsyBz+YaTg/ndwiP8CZNj8="),
+"bone_aabbs": [AABB(-0.446614, 0, -0.515705, 0.893227, 1.33335, 1.03141), AABB(-0.446614, 3.18989, -0.515705, 0.893237, 1.00136e-05, 1.03141), AABB(-0.446614, 5.02731, -0.515705, 0.893227, 0.239908, 1.03141)],
+"format": 34359745559,
+"index_count": 156,
+"index_data": PackedByteArray("AAASAAIAAAATABIAAgASABQAAgAUAAMAEwAVABIAEwAWABUAEgAMABQAEgAVAAwAAwAUABcAAwAXAAQAFAAMAA4AFAAOABcAFgAIABUAFgALAAgAFQAJAAwAFQAIAAkADAANAA4ADAAJAA0ACAAYAAkACwAZAAgACAAZABgACwABABkACQAYABoACQAaAA0AGQAaABgADQAaABsAGgAZABwAHAAZAAEAGgAcABsADQAbAAoACgAbABwADgANAAoAEAAcAAEACgAcABAAEAABABEADgAKAA8ADwAKABAAFwAOAA8AHQAQABEADwAQAB0AHQARAB4AFwAPAB8AHwAPAB0ABAAXAB8ABAAfAAUAHwAdACAAIAAdAB4ABQAfACAAIAAeACEABQAgAAYABgAgACEABgAhAAcA"),
+"lods": [0.189634, PackedByteArray("AAAIAAIAAAALAAgACwABAAgAAgAIAAwAAgAMAAMACAABAAkACAAJAAwADAAJAA0AAwAMAA4ADAANAA4AAwAOAAQADQAJAAoACQABAAoADgANAAoABAAOAA8ADgAKAA8ABAAPAAUAEAAKAAEADwAKABAABQAPABAAEAABABEABQAQAAYABgAQABEABgARAAcA"), 0.297268, PackedByteArray("AAAIAAIAAAABAAgAAgAIAAkACAABAAkAAgAJAAMAAwAJAAQABAAJAAoACQABAAoABAAKAAUABQAKAAYABgAKAAEABgABAAcA"), 2.14082, PackedByteArray("AAABAAIAAgABAAMAAwABAAQABQAEAAEABQABAAYABgABAAcA")],
+"material": SubResource("StandardMaterial3D_xvc8x"),
+"name": "Circle",
+"primitive": 3,
+"skin_data": PackedByteArray("AAAAAAAAAAD//wAAAAAAAAIAAAAAAAAA//8AAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAA//8AAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAA//8AAAAAAAACAAAAAAAAAP//AAAAAAAAAgAAAAAAAAD//wAAAAAAAAIAAAAAAAAA//8AAAAAAAACAAAAAAAAAP//AAAAAAAAAQAAAAAAAAD//wAAAAAAAAIAAAAAAAAA//8AAAAAAAABAAAAAAAAAP//AAAAAAAAAQAAAAAAAAD//wAAAAAAAAIAAAAAAAAA//8AAAAAAAACAAAAAAAAAP//AAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAA//8AAAAAAAAAAAAAAAAAAP//AAAAAAAAAQAAAAAAAAD//wAAAAAAAAEAAAAAAAAA//8AAAAAAAAAAAAAAAAAAP//AAAAAAAAAgAAAAAAAAD//wAAAAAAAAIAAAAAAAAA//8AAAAAAAACAAAAAAAAAP//AAAAAAAAAgAAAAAAAAD//wAAAAAAAAIAAAAAAAAA//8AAAAAAAABAAAAAAAAAP//AAAAAAAAAQAAAAAAAAD//wAAAAAAAAAAAAAAAAAA//8AAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAD//wAAAAAAAA=="),
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 34,
+"vertex_data": PackedByteArray("AAAAAAAAAAA/BQS/AAAAAPSMqEAql6W+iarkPgAAAAA/BYS+iarkPgAAAAA/BYQ+AAAAAAAAAAA/BQQ/iarkvgAAAAA/BYQ+iarkvgAAAAA/BYS+AAAAAAAAAAA/BQS/iarkPrXfoEA/BYS+iarkPrXfoEA/BYQ+iarkvrXfoEA/BYQ+AAAAALXfoEA/BQS/iarkPisnTEA/BYQ+AAAAALXfoEA/BQQ/AAAAACsnTEA/BQQ/iarkvisnTEA/BYQ+iarkvrXfoEA/BYS+AAAAALXfoEA/BQS/iarkPkurqj8/BYS+AAAAAEurqj8/BQS/iarkPkurqj8/BYQ+iarkPisnTEA/BYS+AAAAACsnTEA/BQS/AAAAAEurqj8/BQQ/02ePPvSMqEAqlyU+02ePPvSMqEAqlyW+AAAAAPSMqEAql6U+02ePvvSMqEAqlyU+02ePvvSMqEAqlyW+iarkvisnTEA/BYS+AAAAACsnTEA/BQS/iarkvkurqj8/BYQ+iarkvkurqj8/BYS+AAAAAEurqj8/BQS//3//fyn7asL/f5gxxwiywdku/3+4rYnBAADZru5REsH/////0ABnwP//2a43ATOXJdH/f0L97Jb/f/9/AvwBviQ+32cOhMLjHxjaQVtVuc/f59pB7yqNlP9/K2FviQDtAADZrpBVCMYr4QAAXQ6Luv/////1BQS9///ZrmoT3pPawd9nOFE/g/9/K2EBX2yB2S7/fyatUsL/f/9/nPcwxAAA2a79USbB2S7/f8GmDcv/f/9/X91O0f////9iAU2/qUSeJWo+1sthWlU71Ug61JixAAD8Ex+8VbueJWIgO6SdpVU7niq1oSXR/38S4yGS/3//f3zaPq3//9muVgShliXR/38++TCW/3//f4v3xbs=")
+}]
+blend_shape_mode = 0
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_sbnjo"]
-_data = {
-&"RESET": SubResource("Animation_nxej7"),
-&"wiggle": SubResource("Animation_grn3v")
-}
+[sub_resource type="Skin" id="Skin_o5uxk"]
+resource_name = "Skin"
+bind_count = 3
+bind/0/name = &"Bottom"
+bind/0/bone = -1
+bind/0/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+bind/1/name = &"Middle"
+bind/1/bone = -1
+bind/1/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.83053, 0)
+bind/2/name = &"Top"
+bind/2/bone = -1
+bind/2/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.95575, 0)
 
-[node name="Node3D" type="Node3D"]
+[node name="Fingy" type="Node3D"]
+script = ExtResource("1_grn3v")
 
-[node name="fingy" parent="." instance=ExtResource("1_qinok")]
+[node name="Armature2" type="Node3D" parent="."]
 transform = Transform3D(0.173859, 0, 0, 0, 0.173859, 0, 0, 0, 0.173859, 0.0162493, 0, 0.0506339)
 
-[node name="Skeleton3D" parent="fingy/Armature" index="0"]
-rotation_edit_mode = 1
+[node name="Skeleton3D" type="Skeleton3D" parent="Armature2"]
+bones/0/name = "Bottom"
+bones/0/parent = -1
+bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+bones/0/enabled = true
+bones/0/position = Vector3(0, 0, 0)
+bones/0/rotation = Quaternion(0, 0, 0, 1)
+bones/0/scale = Vector3(1, 1, 1)
+bones/1/name = "Middle"
+bones/1/parent = 0
+bones/1/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.83053, 0)
+bones/1/enabled = true
+bones/1/position = Vector3(0, 1.83053, 0)
+bones/1/rotation = Quaternion(0, 0, 0, 1)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/name = "Top"
+bones/2/parent = 1
+bones/2/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.12521, 0)
+bones/2/enabled = true
+bones/2/position = Vector3(0, 2.12521, 0)
+bones/2/rotation = Quaternion(0, 0, 0, 1)
+bones/2/scale = Vector3(1, 1, 1)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="fingy/Armature/Skeleton3D/Circle" index="0"]
+[node name="Circle" type="MeshInstance3D" parent="Armature2/Skeleton3D"]
+mesh = SubResource("ArrayMesh_shf86")
+skin = SubResource("Skin_o5uxk")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Armature2/Skeleton3D/Circle"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0934623, 4.79744, -0.291235)
 light_color = Color(0, 1, 1, 1)
 light_energy = 2.984
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_sbnjo")
-}
-autoplay = "wiggle"
-
-[editable path="fingy"]

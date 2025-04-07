@@ -36,14 +36,6 @@ func _ready() -> void:
 func _physics_process(delta):
 	var direction = Vector3.ZERO
 
-	if Input.is_action_pressed("right"):
-		apply_impulse(Vector3(0,0,10*delta))
-	if Input.is_action_pressed("left"):
-		apply_impulse(Vector3(0,0,-10*delta))
-	if Input.is_action_pressed("back"):
-		apply_impulse(rotation * -speed * delta)
-	if Input.is_action_pressed("forward"):
-		apply_impulse(transform.basis.x * speed * delta)
 	if throttle.percent > 0:
 		apply_force(transform.basis.x *max_throttle_speed *throttle.percent )
 	if position.y != -target_depth:
